@@ -1,23 +1,24 @@
-import logo from './logo.svg';
+import React from "react";
+// React Router
+import { Route } from "react-router-dom"
+// Components imports
+import Home from "./components/Home";
+import StarshipPage from "./components/StarshipPage"
+// Common imports
+import Layout from "./components/common/Layout"
+// import Loading from "./components/common/Loading"
+// CSS imports
 import './App.css';
 
-function App() {
+const App = () => {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Layout>
+          <Route path="/" exact component={Home} />
+          <Route path="/starship" render={({location}) =>
+            <StarshipPage location={location} />
+          }/>
+      </Layout>
     </div>
   );
 }
